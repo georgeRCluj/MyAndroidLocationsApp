@@ -1,4 +1,4 @@
-package app.myandroidlocations.com.myandroidlocationsapp.MyLocations;
+package app.myandroidlocations.com.myandroidlocationsapp.MyLocations.Data;
 
 class Constants {
 

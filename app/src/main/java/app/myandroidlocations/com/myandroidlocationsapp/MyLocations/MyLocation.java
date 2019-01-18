@@ -16,32 +16,65 @@ public class MyLocation {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo
-    public int id;
+    private int id;
 
     @SerializedName("label")
     @ColumnInfo
     @NonNull
-    public String label;
+    private String label;
 
     @SerializedName("address")
     @ColumnInfo
     @NonNull
-    public String address;
+    private String address;
 
     @SerializedName("latitude")
     @ColumnInfo
     @NonNull
-    public double latitude;
+    private double latitude;
 
     @SerializedName("longitude")
     @ColumnInfo
     @NonNull
-    public double longitude;
+    private double longitude;
 
-    public MyLocation(String label, String address, double latitude, double longitude) {
+    public String getLabel() {
+        return label;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLabel(String label) {
         this.label = label;
+    }
+
+    public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 }

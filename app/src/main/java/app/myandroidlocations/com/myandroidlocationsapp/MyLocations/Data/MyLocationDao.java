@@ -1,4 +1,4 @@
-package app.myandroidlocations.com.myandroidlocationsapp.MyLocations;
+package app.myandroidlocations.com.myandroidlocationsapp.MyLocations.Data;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;

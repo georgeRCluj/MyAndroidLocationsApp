@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
+import app.myandroidlocations.com.myandroidlocationsapp.MyLocations.Data.MyLocationsDataRepository;
+
 public class MyLocationsViewModel extends AndroidViewModel {
     private Context context;
     private MyLocationsDataRepository myLocationsData;

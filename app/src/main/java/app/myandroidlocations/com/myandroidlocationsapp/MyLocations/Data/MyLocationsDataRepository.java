@@ -1,4 +1,4 @@
-package app.myandroidlocations.com.myandroidlocationsapp.MyLocations;
+package app.myandroidlocations.com.myandroidlocationsapp.MyLocations.Data;
 
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
@@ -7,13 +7,14 @@ import android.util.Log;
 import java.util.List;
 import java.util.concurrent.Executors;
 
+import app.myandroidlocations.com.myandroidlocationsapp.MyLocations.MyLocation;
 import app.myandroidlocations.com.myandroidlocationsapp.Utils.Networking.RetrofitFactory;
 import app.myandroidlocations.com.myandroidlocationsapp.Utils.Storage.LocalStorage;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-class MyLocationsDataRepository {
+public class MyLocationsDataRepository {
     private MyLocationDao myLocationsDao;
     private Context context;
     private boolean isTheFirstRunOfTheApp = false;
@@ -22,7 +23,7 @@ class MyLocationsDataRepository {
     private MyLocationsApiInterface myLocationsService;
     private final String TAG = this.getClass().getName();
 
-    MyLocationsDataRepository(Context context) {
+    public MyLocationsDataRepository(Context context) {
         this.context = context;
         initializeMyLocationsDao();
         checkIfAppHasRunForTheFirstTime();
@@ -50,7 +51,7 @@ class MyLocationsDataRepository {
     //endregion
 
     //region LiveData objects / getters
-    LiveData<List<MyLocation>> getAllMyLocations() {
+    public LiveData<List<MyLocation>> getAllMyLocations() {
         return myLocationsDao.getAllMyLocations();
     }
     //endregion
@@ -74,7 +75,7 @@ class MyLocationsDataRepository {
     //endregion
 
     //region Clear rxJava disposables
-    void clearDisposables() {
+    public void clearDisposables() {
         if (getListOfLocationsDisposable != null && !getListOfLocationsDisposable.isDisposed()) {
             getListOfLocationsDisposable.dispose();
         }

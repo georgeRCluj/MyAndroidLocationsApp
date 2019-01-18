@@ -1,9 +1,11 @@
-package app.myandroidlocations.com.myandroidlocationsapp.MyLocations;
+package app.myandroidlocations.com.myandroidlocationsapp.MyLocations.Data;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
+
+import app.myandroidlocations.com.myandroidlocationsapp.MyLocations.MyLocation;
 
 @Database(entities = {MyLocation.class},
         version = 1,
