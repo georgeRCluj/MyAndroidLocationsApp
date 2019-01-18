@@ -1,4 +1,13 @@
 <resources>
-    <string name="app_name">MyAndroidLocationsApp</string>
+    <string name="app_name">My Locations App</string>
     <string name="title_activity_maps">Map</string>
+
+    <!-- PERMISSIONS -->
+    <string name="permissions_ok">I agree</string>
+    <string name="location_permission_needed">Location Permission Needed</string>
+    <string name="location_permission_message">This app needs the Location permission, please accept to use sensors accordingly</string>
+
+    <!-- TOOLBAR TITLES -->
+    <string name="toolbar_my_locations">My Locations</string>
+    <string name="toolbar_location_details">Location Details</string>
 </resources>
