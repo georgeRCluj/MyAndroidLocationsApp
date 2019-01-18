@@ -38,13 +38,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    // Dagger2
-    implementation 'com.google.dagger:dagger:2.16'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
-    implementation 'com.google.dagger:dagger-android:2.16'
-    annotationProcessor 'com.google.dagger:dagger-android-processor:2.13'
-    implementation 'com.google.dagger:dagger-android-support:2.16'
-
     //////// ANDROID JETPACK  ////////
     // Live data
     implementation 'android.arch.lifecycle:livedata:1.1.1'
@@ -53,10 +46,10 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:1.1.1"
     implementation "android.arch.lifecycle:viewmodel:1.1.1"
 
-    // Paging library
-    implementation "android.arch.paging:runtime:1.0.1"
-    testImplementation "android.arch.paging:common:1.0.1"
-    implementation "android.arch.paging:rxjava2:1.0.1"
+    //room
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    testImplementation "android.arch.persistence.room:testing:1.1.1"
     //////// ANDROID JETPACK  ////////
 
     // Networking
