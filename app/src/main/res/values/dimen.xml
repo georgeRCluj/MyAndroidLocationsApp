@@ -3,7 +3,7 @@
     <dimen name="toolbar_title_dimension">24sp</dimen>
     <dimen name="location_title_size">18sp</dimen>
 
-    <dimen name="location_list_item_height">35dp</dimen>
+    <dimen name="location_list_item_height">40dp</dimen>
     <dimen name="location_list_item_margin_left">5dp</dimen>
 
 

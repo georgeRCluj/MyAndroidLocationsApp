@@ -5,18 +5,22 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.graphics.Rect;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import app.myandroidlocations.com.myandroidlocationsapp.MyLocationDetails.MyLocationDetailsActivity;
 import app.myandroidlocations.com.myandroidlocationsapp.R;
 import app.myandroidlocations.com.myandroidlocationsapp.Utils.GeneralConstants;
+import app.myandroidlocations.com.myandroidlocationsapp.Utils.LocationUtils.LocationMgr;
 import app.myandroidlocations.com.myandroidlocationsapp.Utils.PermissionUtils;
 import app.myandroidlocations.com.myandroidlocationsapp.databinding.ActivityMyLocationsBinding;
+import rx.Observer;
 
 public class MyLocationsActivity extends AppCompatActivity implements MyLocationsNavigator {
     private ActivityMyLocationsBinding binding;
@@ -31,6 +35,7 @@ public class MyLocationsActivity extends AppCompatActivity implements MyLocation
         attachClickListeners();
         initializeRecyclerView();
         requestLocationPermissions();
+        initializeLocationManager();
     }
 
     //region Click listeners
@@ -39,6 +44,7 @@ public class MyLocationsActivity extends AppCompatActivity implements MyLocation
     }
     //endregion
 
+    //region Initialize recycler view
     private void initializeRecyclerView() {
         myLocationsAdapter = new MyLocationsAdapter(this, this);
         binding.myLocationsRecycler.setHasFixedSize(true);
@@ -50,8 +56,30 @@ public class MyLocationsActivity extends AppCompatActivity implements MyLocation
             }
         });
     }
+    //endregion
 
-    //region Location Permission. Initialize View model
+    //region Set location manager behavior
+    private void initializeLocationManager() {
+        LocationMgr locationMgr = new LocationMgr(this);
+        locationMgr.getLocationObservable().subscribe(new Observer<Location>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+            }
+
+            @Override
+            public void onNext(Location location) {
+                myLocationsAdapter.refreshMyCurrentLocation(location);
+            }
+        });
+        locationMgr.initialize();
+    }
+    //endregion
+
+    //region Check location Permission.
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {

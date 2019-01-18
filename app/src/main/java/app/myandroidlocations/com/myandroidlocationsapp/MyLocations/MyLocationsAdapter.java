@@ -1,12 +1,14 @@
 package app.myandroidlocations.com.myandroidlocationsapp.MyLocations;
 
 import android.app.Activity;
+import android.location.Location;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import java.util.List;
 
+import app.myandroidlocations.com.myandroidlocationsapp.Utils.LocationUtils.LocationUtils;
 import app.myandroidlocations.com.myandroidlocationsapp.databinding.ActivityMyLocationsItemBinding;
 
 public class MyLocationsAdapter extends RecyclerView.Adapter {
@@ -14,6 +16,7 @@ public class MyLocationsAdapter extends RecyclerView.Adapter {
     private Activity context;
     private MyLocationsNavigator navigator;
     private final int EMPTY_COUNTER = 0;
+    private Location myRealLocation;
 
     public MyLocationsAdapter(Activity context, MyLocationsNavigator navigator) {
         this.context = context;
@@ -25,7 +28,8 @@ public class MyLocationsAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    void refreshMyCurrentLocation() {
+    void refreshMyCurrentLocation(Location location) {
+        myRealLocation = location;
         notifyDataSetChanged();
     }
 
@@ -63,7 +67,7 @@ public class MyLocationsAdapter extends RecyclerView.Adapter {
 
         private void bind(MyLocation currentMyLocation) {
             binding.setMyLocation(currentMyLocation);
-            binding.setAirDistanceToCurrentPosition("50 meters");
+            binding.setAirDistanceToCurrentPosition(LocationUtils.getDistanceToCurrentLocation(currentMyLocation, myRealLocation));
             configureClickOnMyLocation(currentMyLocation);
             binding.executePendingBindings();
         }
