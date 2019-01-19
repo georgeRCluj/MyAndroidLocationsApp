@@ -1,4 +1,4 @@
-package app.myandroidlocations.com.myandroidlocationsapp.MyLocations;
+package app.myandroidlocations.com.myandroidlocationsapp.MyLocationDetails;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -10,12 +10,13 @@ import java.util.List;
 
 import app.myandroidlocations.com.myandroidlocationsapp.Data.MyLocationsDataRepository;
 import app.myandroidlocations.com.myandroidlocationsapp.DependencyInjection;
+import app.myandroidlocations.com.myandroidlocationsapp.MyLocations.MyLocation;
 
-public class MyLocationsViewModel extends AndroidViewModel {
+public class LocationDetailsViewModel extends AndroidViewModel {
     private Context context;
     private MyLocationsDataRepository myLocationsData;
 
-    public MyLocationsViewModel(@NonNull Application application) {
+    public LocationDetailsViewModel(@NonNull Application application) {
         super(application);
         context = application;
         myLocationsData = DependencyInjection.getInjector(context).injectMyLocationsDataRepo();
@@ -25,9 +26,7 @@ public class MyLocationsViewModel extends AndroidViewModel {
         return myLocationsData.getAllMyLocations();
     }
 
-    @Override
-    protected void onCleared() {
-        super.onCleared();
-        myLocationsData.clearDisposables();
+    LiveData<MyLocation> getMyLocationWithId(int id) {
+        return myLocationsData.getMyLocationWithId(id);
     }
 }

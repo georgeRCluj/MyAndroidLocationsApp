@@ -1,4 +1,4 @@
-package app.myandroidlocations.com.myandroidlocationsapp.MyLocations.Data;
+package app.myandroidlocations.com.myandroidlocationsapp.Data;
 
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
@@ -27,8 +27,6 @@ public class MyLocationsDataRepository {
         this.context = context;
         initializeMyLocationsDao();
         checkIfAppHasRunForTheFirstTime();
-//        MyLocation myLocation = new MyLocation("Home", "Floresti, Narciselor 24", -34.5, 151.7);
-//        insertIntoDb(myLocation);
     }
 
     //region Populate database with my locations from the api (just on the first run)
@@ -54,6 +52,10 @@ public class MyLocationsDataRepository {
     public LiveData<List<MyLocation>> getAllMyLocations() {
         return myLocationsDao.getAllMyLocations();
     }
+
+    public LiveData<MyLocation> getMyLocationWithId(int id) {
+        return myLocationsDao.getMyLocationWithId(id);
+    }
     //endregion
 
     //region Database
@@ -62,6 +64,8 @@ public class MyLocationsDataRepository {
     }
 
     void insertIntoDb(MyLocation myLocation) {
+//        MyLocation myLocation = new MyLocation("Home", "Floresti, Narciselor 24", -34.5, 151.7);
+//        insertIntoDb(myLocation);
         Executors.newSingleThreadExecutor().execute(() -> myLocationsDao.insert(myLocation));
     }
 

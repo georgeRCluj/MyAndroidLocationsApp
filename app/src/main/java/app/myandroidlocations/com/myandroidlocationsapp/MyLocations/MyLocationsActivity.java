@@ -117,7 +117,7 @@ public class MyLocationsActivity extends AppCompatActivity implements MyLocation
     //region Navigator
     @Override
     public void goToMyLocationDetails(int clickedLocationId) {
-        startActivity(new Intent(this, MyLocationDetailsActivity.class));
+        startActivity(new Intent(this, MyLocationDetailsActivity.class).putExtra(GeneralConstants.OPEN_LOCATION_DETAILS_KEY, clickedLocationId));
     }
 
     @Override

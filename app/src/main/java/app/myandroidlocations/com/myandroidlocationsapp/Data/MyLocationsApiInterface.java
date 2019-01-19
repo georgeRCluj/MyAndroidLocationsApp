@@ -1,4 +1,4 @@
-package app.myandroidlocations.com.myandroidlocationsapp.MyLocations.Data;
+package app.myandroidlocations.com.myandroidlocationsapp.Data;
 
 import java.util.List;
 

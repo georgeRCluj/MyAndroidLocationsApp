@@ -1,4 +1,4 @@
-package app.myandroidlocations.com.myandroidlocationsapp.MyLocations.Data;
+package app.myandroidlocations.com.myandroidlocationsapp.Data;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
@@ -17,6 +17,9 @@ interface MyLocationDao {
 
     @Query("SELECT * FROM my_locations")
     LiveData<List<MyLocation>> getAllMyLocations();
+
+    @Query("SELECT * FROM my_locations WHERE id = :id")
+    LiveData<MyLocation> getMyLocationWithId(int id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(MyLocation myLocation);
