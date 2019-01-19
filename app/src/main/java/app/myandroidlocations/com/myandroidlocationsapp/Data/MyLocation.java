@@ -1,4 +1,4 @@
-package app.myandroidlocations.com.myandroidlocationsapp.MyLocations;
+package app.myandroidlocations.com.myandroidlocationsapp.Data;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -10,7 +10,8 @@ import com.google.gson.annotations.SerializedName;
 
 import io.reactivex.annotations.NonNull;
 
-@Entity(tableName = "my_locations")
+@Entity(tableName = "my_locations",
+        indices = {@Index("label")})
 
 public class MyLocation {
 
@@ -75,6 +76,13 @@ public class MyLocation {
     }
 
     public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public MyLocation(String label, String address, double latitude, double longitude) {
+        this.label = label;
+        this.address = address;
+        this.latitude = latitude;
         this.longitude = longitude;
     }
 }

@@ -9,6 +9,10 @@
 
     <!-- ALERT DIALOGS -->
     <color name="permission_positive_btn_color">#000000</color>
+    <color name="alert_background">#FFFFFF</color>
+    <color name="send_button_color">#1c73ff</color>
+    <color name="edit_field_divider_colour">#e7e7e7</color>
+    <color name="edit_field_text_color">#181818</color>
 
     <!-- BUTTONS -->
     <color name="fab_cross_color">#FFFFFF</color>

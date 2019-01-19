@@ -10,8 +10,6 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import app.myandroidlocations.com.myandroidlocationsapp.MyLocations.MyLocation;
-
 @Dao
 interface MyLocationDao {
 
@@ -20,6 +18,9 @@ interface MyLocationDao {
 
     @Query("SELECT * FROM my_locations WHERE id = :id")
     LiveData<MyLocation> getMyLocationWithId(int id);
+
+    @Query("SELECT * FROM my_locations WHERE label = :label")
+    LiveData<MyLocation> getMyLocationWithLabel(String label);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(MyLocation myLocation);

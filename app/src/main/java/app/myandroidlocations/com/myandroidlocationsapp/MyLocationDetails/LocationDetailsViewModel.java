@@ -10,7 +10,7 @@ import java.util.List;
 
 import app.myandroidlocations.com.myandroidlocationsapp.Data.MyLocationsDataRepository;
 import app.myandroidlocations.com.myandroidlocationsapp.DependencyInjection;
-import app.myandroidlocations.com.myandroidlocationsapp.MyLocations.MyLocation;
+import app.myandroidlocations.com.myandroidlocationsapp.Data.MyLocation;
 
 public class LocationDetailsViewModel extends AndroidViewModel {
     private Context context;

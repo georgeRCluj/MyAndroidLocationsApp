@@ -13,13 +13,8 @@
             android:background="@color/colorPrimary">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/toolbar_my_locations"
-                android:textColor="@color/toolbarTitleColor"
-                android:textSize="@dimen/toolbar_title_dimension"
-                android:textStyle="bold" />
+                style="@style/ToolbarTextStyle"
+                android:text="@string/toolbar_my_locations" />
         </android.support.v7.widget.Toolbar>
 
         <android.support.v7.widget.RecyclerView

@@ -11,9 +11,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
+import app.myandroidlocations.com.myandroidlocationsapp.AddLocation.AddLocationActivity;
 import app.myandroidlocations.com.myandroidlocationsapp.MyLocationDetails.MyLocationDetailsActivity;
 import app.myandroidlocations.com.myandroidlocationsapp.R;
 import app.myandroidlocations.com.myandroidlocationsapp.Utils.GeneralConstants;
@@ -32,15 +32,14 @@ public class MyLocationsActivity extends AppCompatActivity implements MyLocation
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_my_locations);
         navigator = this;
-        attachClickListeners();
+        setActionOnAddButton();
         initializeRecyclerView();
         requestLocationPermissions();
-        initializeLocationManager();
     }
 
     //region Click listeners
-    private void attachClickListeners() {
-        binding.fab.setOnClickListener(view -> navigator.goToMyLocationDetails(0));
+    private void setActionOnAddButton() {
+        binding.fab.setOnClickListener(view -> navigator.goToAddLocation());
     }
     //endregion
 
@@ -96,6 +95,7 @@ public class MyLocationsActivity extends AppCompatActivity implements MyLocation
 
     private void requestLocationPermissions() {
         if (PermissionUtils.isLocationStoragePermissionGranted(this)) {
+            initializeLocationManager();
             initializeViewModel();
         } else {
             PermissionUtils.checkAndRequestLocationPermissionFromActivity(this);
@@ -122,7 +122,7 @@ public class MyLocationsActivity extends AppCompatActivity implements MyLocation
 
     @Override
     public void goToAddLocation() {
-
+        startActivity(new Intent(this, AddLocationActivity.class));
     }
     //endregion
 }

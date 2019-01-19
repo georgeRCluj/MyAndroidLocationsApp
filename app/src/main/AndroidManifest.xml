@@ -22,8 +22,12 @@
         <activity
             android:name=".MyLocationDetails.MyLocationDetailsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".AddLocation.AddLocationActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".MyLocations.MyLocationsActivity"

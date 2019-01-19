@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,7 +16,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.HashMap;
 import java.util.List;
 
-import app.myandroidlocations.com.myandroidlocationsapp.MyLocations.MyLocation;
+import app.myandroidlocations.com.myandroidlocationsapp.Data.MyLocation;
 import app.myandroidlocations.com.myandroidlocationsapp.R;
 import app.myandroidlocations.com.myandroidlocationsapp.Utils.GeneralConstants;
 import app.myandroidlocations.com.myandroidlocationsapp.databinding.ActivityMyLocationDetailsBinding;

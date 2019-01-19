@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import app.myandroidlocations.com.myandroidlocationsapp.Data.MyLocation;
 import app.myandroidlocations.com.myandroidlocationsapp.Utils.LocationUtils.LocationUtils;
 import app.myandroidlocations.com.myandroidlocationsapp.databinding.ActivityMyLocationsItemBinding;
 

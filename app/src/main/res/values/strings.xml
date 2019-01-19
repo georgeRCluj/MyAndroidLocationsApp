@@ -10,6 +10,23 @@
     <!-- TOOLBAR TITLES -->
     <string name="toolbar_my_locations">My locations</string>
     <string name="toolbar_location_details">Location details</string>
-    <string name="toolbar_add_location">Add new location</string>
+    <string name="toolbar_add_location">Add location</string>
     <string name="toolbar_edit_location">Edit location</string>
+
+    <!-- ADD LOCATION TEXTS -->
+    <string name="add_location_label">Label:\u0020</string>
+    <string name="add_location_address">Address:\u0020</string>
+    <string name="add_location_latitude">Latitude:\u0020</string>
+    <string name="add_location_longitude">Longitude:\u0020</string>
+    <string name="add_location_add_label">Please enter the location label</string>
+    <string name="add_location_add_address">Please enter the location address</string>
+    <string name="add_location_add_latitude">Please enter the latitude coordinate</string>
+    <string name="add_location_add_longitude">Please enter the longitude coordinate</string>
+    <string name="add_location_label_empty">Please enter a label</string>
+    <string name="add_location_label_already_exists">The label already exists; please choose other label</string>
+    <string name="add_location_address_empty">Please fill in the address</string>
+    <string name="add_location_latitude_invalid">Please enter a valid latitude</string>
+    <string name="add_location_longitude_invalid">Please enter a valid longitude</string>
+
+
 </resources>

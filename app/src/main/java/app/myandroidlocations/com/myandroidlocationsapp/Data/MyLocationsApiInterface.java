@@ -2,7 +2,6 @@ package app.myandroidlocations.com.myandroidlocationsapp.Data;
 
 import java.util.List;
 
-import app.myandroidlocations.com.myandroidlocationsapp.MyLocations.MyLocation;
 import io.reactivex.Maybe;
 import retrofit2.http.GET;
 

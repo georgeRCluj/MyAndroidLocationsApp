@@ -7,7 +7,6 @@ import android.util.Log;
 import java.util.List;
 import java.util.concurrent.Executors;
 
-import app.myandroidlocations.com.myandroidlocationsapp.MyLocations.MyLocation;
 import app.myandroidlocations.com.myandroidlocationsapp.Utils.NetworkingUtils.RetrofitFactory;
 import app.myandroidlocations.com.myandroidlocationsapp.Utils.SharedPrefUtils.SharedPref;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -56,6 +55,10 @@ public class MyLocationsDataRepository {
     public LiveData<MyLocation> getMyLocationWithId(int id) {
         return myLocationsDao.getMyLocationWithId(id);
     }
+
+    public LiveData<MyLocation> getMyLocationWithLabel(String label) {
+        return myLocationsDao.getMyLocationWithLabel(label);
+    }
     //endregion
 
     //region Database
@@ -63,9 +66,7 @@ public class MyLocationsDataRepository {
         myLocationsDao = MyLocationsDb.getDatabase(context).myLocationDao();
     }
 
-    void insertIntoDb(MyLocation myLocation) {
-//        MyLocation myLocation = new MyLocation("Home", "Floresti, Narciselor 24", -34.5, 151.7);
-//        insertIntoDb(myLocation);
+    public void insertIntoDb(MyLocation myLocation) {
         Executors.newSingleThreadExecutor().execute(() -> myLocationsDao.insert(myLocation));
     }
 
