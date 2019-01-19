@@ -13,7 +13,7 @@
     <string name="toolbar_add_location">Add location</string>
     <string name="toolbar_edit_location">Edit location</string>
 
-    <!-- ADD LOCATION TEXTS -->
+    <!-- ADD / UPDATE LOCATION TEXTS -->
     <string name="add_location_label">Label:\u0020</string>
     <string name="add_location_address">Address:\u0020</string>
     <string name="add_location_latitude">Latitude:\u0020</string>
@@ -27,6 +27,8 @@
     <string name="add_location_address_empty">Please fill in the address</string>
     <string name="add_location_latitude_invalid">Please enter a valid latitude</string>
     <string name="add_location_longitude_invalid">Please enter a valid longitude</string>
+    <string name="update_location_longitude_invalid">Save changes</string>
+    <string name="update_location_toolbar_title">Edit location</string>
 
     <!-- MENUS -->
     <string name="location_details_edit_menu">Edit location</string>
@@ -35,5 +37,8 @@
     <!-- DELETE -->
     <string name="location_details_delete_confirmation">Are you sure that you want to delete this location?</string>
     <string name="location_details_delete">Delete</string>
+    <string name="location_details_cancel">Cancel</string>
 
+    <!-- EMPTY LIST -->
+    <string name="empty_list">The list is empty, please add a location!</string>
 </resources>

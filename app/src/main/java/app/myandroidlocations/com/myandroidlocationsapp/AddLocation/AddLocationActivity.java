@@ -4,9 +4,7 @@ import android.app.Dialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import app.myandroidlocations.com.myandroidlocationsapp.Data.MyLocation;
 import app.myandroidlocations.com.myandroidlocationsapp.R;
@@ -14,11 +12,12 @@ import app.myandroidlocations.com.myandroidlocationsapp.Utils.CommunicationUtils
 import app.myandroidlocations.com.myandroidlocationsapp.Utils.LocationUtils.LocationUtils;
 import app.myandroidlocations.com.myandroidlocationsapp.databinding.ActivityAddLocationBinding;
 
-public class AddLocationActivity extends AppCompatActivity {
+public class AddLocationActivity extends AppCompatActivity implements AddLocationNavigator{
 
     private ActivityAddLocationBinding binding;
     private AddLocationViewModel addLocationViewModel;
 
+    //region Lifecycle methods
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,15 +25,21 @@ public class AddLocationActivity extends AppCompatActivity {
         initializeViewModel();
         setActionOnSaveButton();
     }
+    //endregion
 
+    //region View model
     private void initializeViewModel() {
         addLocationViewModel = ViewModelProviders.of(this).get(AddLocationViewModel.class);
     }
+    //endregion
 
+    //region Click listeners
     private void setActionOnSaveButton() {
         binding.saveButton.setOnClickListener(view -> validateFields());
     }
+    //endregion
 
+    //region Validation
     private void validateFields() {
         String label = binding.labelEditText.getText().toString().trim();
         String address = binding.addressEditText.getText().toString().trim();
@@ -42,6 +47,7 @@ public class AddLocationActivity extends AppCompatActivity {
         String longitude = binding.longitudeEditText.getText().toString().trim();
         final String okText = "OK";
 
+        // firstly check if the label is empty
         if (label.length() == 0) {
             CommunicationUtils.showOneAnswerDialog(AddLocationActivity.this, getResources().getString(R.string.add_location_label_empty), okText, true, Dialog::dismiss);
         }
@@ -63,9 +69,17 @@ public class AddLocationActivity extends AppCompatActivity {
                 } else {
                     // after all validations, insert in DB
                     addLocationViewModel.insertMyLocationIntoDb(new MyLocation(label, address, Double.parseDouble(latitude), Double.parseDouble(longitude)));
-                    finish();
+                    this.onAddLocationSuccessful();
                 }
             });
         }
     }
+    //endregion
+
+    //region Navigator
+    @Override
+    public void onAddLocationSuccessful() {
+        finish();
+    }
+    //endregion
 }

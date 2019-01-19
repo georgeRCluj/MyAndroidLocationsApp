@@ -30,6 +30,11 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".EditLocation.EditLocationActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".MyLocations.MyLocationsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait">

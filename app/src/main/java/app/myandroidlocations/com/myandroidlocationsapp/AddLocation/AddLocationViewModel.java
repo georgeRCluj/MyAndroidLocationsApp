@@ -10,7 +10,7 @@ import app.myandroidlocations.com.myandroidlocationsapp.Data.MyLocationsDataRepo
 import app.myandroidlocations.com.myandroidlocationsapp.DependencyInjection;
 import app.myandroidlocations.com.myandroidlocationsapp.Data.MyLocation;
 
-public class AddLocationViewModel extends AndroidViewModel {
+class AddLocationViewModel extends AndroidViewModel {
     private Context context;
     private MyLocationsDataRepository myLocationsData;
 

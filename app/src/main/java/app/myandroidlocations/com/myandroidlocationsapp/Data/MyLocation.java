@@ -55,6 +55,14 @@ public class MyLocation {
         return longitude;
     }
 
+    public String getStringLatitude() {
+        return String.valueOf(latitude);
+    }
+
+    public String getStringLongitude() {
+        return String.valueOf(longitude);
+    }
+
     public int getId() {
         return id;
     }

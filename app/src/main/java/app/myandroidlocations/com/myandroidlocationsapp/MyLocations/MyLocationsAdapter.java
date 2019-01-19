@@ -1,6 +1,5 @@
 package app.myandroidlocations.com.myandroidlocationsapp.MyLocations;
 
-import android.app.Activity;
 import android.location.Location;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,16 +13,17 @@ import app.myandroidlocations.com.myandroidlocationsapp.databinding.ActivityMyLo
 
 public class MyLocationsAdapter extends RecyclerView.Adapter {
     private List<MyLocation> myLocationsList;
-    private Activity context;
     private MyLocationsNavigator navigator;
     private final int EMPTY_COUNTER = 0;
     private Location myRealLocation;
 
-    public MyLocationsAdapter(Activity context, MyLocationsNavigator navigator) {
-        this.context = context;
+    //region Constructor
+    public MyLocationsAdapter(MyLocationsNavigator navigator) {
         this.navigator = navigator;
     }
+    //endregion
 
+    //region Refresh methods
     void refreshMyLocationsList(List<MyLocation> locationList) {
         this.myLocationsList = locationList;
         notifyDataSetChanged();
@@ -33,6 +33,7 @@ public class MyLocationsAdapter extends RecyclerView.Adapter {
         myRealLocation = location;
         notifyDataSetChanged();
     }
+    //endregion
 
     //region Create, Bind view holder
     @Override

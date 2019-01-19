@@ -27,6 +27,7 @@ public class MyLocationsActivity extends AppCompatActivity implements MyLocation
     private MyLocationsNavigator navigator;
     private MyLocationsAdapter myLocationsAdapter;
 
+    //region Lifecycle methods
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,7 @@ public class MyLocationsActivity extends AppCompatActivity implements MyLocation
         initializeRecyclerView();
         requestLocationPermissions();
     }
+    //endregion
 
     //region Click listeners
     private void setActionOnAddButton() {
@@ -45,7 +47,7 @@ public class MyLocationsActivity extends AppCompatActivity implements MyLocation
 
     //region Initialize recycler view
     private void initializeRecyclerView() {
-        myLocationsAdapter = new MyLocationsAdapter(this, this);
+        myLocationsAdapter = new MyLocationsAdapter(this);
         binding.myLocationsRecycler.setHasFixedSize(true);
         binding.myLocationsRecycler.setAdapter(myLocationsAdapter);
         binding.myLocationsRecycler.addItemDecoration(new RecyclerView.ItemDecoration() {
@@ -107,8 +109,15 @@ public class MyLocationsActivity extends AppCompatActivity implements MyLocation
     private void initializeViewModel() {
         MyLocationsViewModel myLocationsViewModel = ViewModelProviders.of(this).get(MyLocationsViewModel.class);
         myLocationsViewModel.getAllMyLocations().observe(this, myLocations -> {
-            if (myLocations != null && myLocations.size() > 0) {
+            if (myLocations != null) {
                 myLocationsAdapter.refreshMyLocationsList(myLocations);
+                if (myLocations.size() > 0) {
+                    binding.emptyListContainer.setVisibility(View.GONE);
+                } else {
+                    binding.emptyListContainer.setVisibility(View.VISIBLE);
+                }
+            } else {
+                binding.emptyListContainer.setVisibility(View.VISIBLE);
             }
         });
     }

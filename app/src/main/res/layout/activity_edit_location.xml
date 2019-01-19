@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="myLocation"
+            type="app.myandroidlocations.com.myandroidlocationsapp.Data.MyLocation" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                style="@style/ToolbarTextStyle"
+                android:text="@string/toolbar_edit_location" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout style="@style/AddLocationLinearLayoutContainerStyle">
+
+                <TextView
+                    style="@style/AddLocationTextViewStyle"
+                    android:text="@string/add_location_label" />
+
+                <EditText
+                    android:id="@+id/labelEditText"
+                    style="@style/AddLocationEditTextStyleInputText"
+                    android:hint="@string/add_location_add_label"
+                    android:text="@{myLocation.label}"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/AddLocationLinearLayoutContainerStyle">
+
+                <TextView
+                    style="@style/AddLocationTextViewStyle"
+                    android:text="@string/add_location_address" />
+
+                <EditText
+                    android:id="@+id/addressEditText"
+                    style="@style/AddLocationEditTextStyleInputText"
+                    android:hint="@string/add_location_add_address"
+                    android:text="@{myLocation.address}"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/AddLocationLinearLayoutContainerStyle">
+
+                <TextView
+                    style="@style/AddLocationTextViewStyle"
+                    android:text="@string/add_location_latitude" />
+
+                <EditText
+                    android:id="@+id/latitudeEditText"
+                    style="@style/AddLocationEditTextStyleInputDecimal"
+                    android:hint="@string/add_location_add_latitude"
+                    android:text="@{myLocation.stringLatitude}"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/AddLocationLinearLayoutContainerStyle">
+
+                <TextView
+                    style="@style/AddLocationTextViewStyle"
+                    android:text="@string/add_location_longitude" />
+
+                <EditText
+                    android:id="@+id/longitudeEditText"
+                    style="@style/AddLocationEditTextStyleInputDecimal"
+                    android:hint="@string/add_location_add_longitude"
+                    android:text="@{myLocation.stringLongitude}"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/saveButton"
+                style="@style/ButtonStyle"
+                android:text="@string/update_location_longitude_invalid" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

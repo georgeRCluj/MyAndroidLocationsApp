@@ -22,11 +22,13 @@ public class MyLocationsDataRepository {
     private MyLocationsApiInterface myLocationsService;
     private final String TAG = this.getClass().getName();
 
+    //region Constructor
     public MyLocationsDataRepository(Context context) {
         this.context = context;
         initializeMyLocationsDao();
         checkIfAppHasRunForTheFirstTime();
     }
+    //endregion
 
     //region Populate database with my locations from the api (just on the first run)
     private void checkIfAppHasRunForTheFirstTime() {
@@ -70,6 +72,10 @@ public class MyLocationsDataRepository {
         Executors.newSingleThreadExecutor().execute(() -> myLocationsDao.insert(myLocation));
     }
 
+    public void updateLocationInDb(MyLocation myLocation) {
+        Executors.newSingleThreadExecutor().execute(() -> myLocationsDao.update(myLocation));
+    }
+
     void insertIntoDb(List<MyLocation> myLocations) {
         Executors.newSingleThreadExecutor().execute(() -> myLocationsDao.insert(myLocations));
     }
@@ -79,7 +85,7 @@ public class MyLocationsDataRepository {
     }
 
     void clearAllDb() {
-        Executors.newSingleThreadExecutor().execute(() -> myLocationsDao.deleteAll());
+        Executors.newSingleThreadExecutor().execute(() -> myLocationsDao.deleteAll()); // do not erase this methods, will be useful in the future
     }
     //endregion
 

@@ -1,6 +1,5 @@
 package app.myandroidlocations.com.myandroidlocationsapp.Utils.NetworkingUtils;
 
-
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
