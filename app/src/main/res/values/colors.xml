@@ -10,6 +10,7 @@
     <!-- ALERT DIALOGS -->
     <color name="permission_positive_btn_color">#000000</color>
 
-    <!-- FAB -->
+    <!-- BUTTONS -->
     <color name="fab_cross_color">#FFFFFF</color>
+    <color name="button_text_color">#FFFFFF</color>
 </resources>
