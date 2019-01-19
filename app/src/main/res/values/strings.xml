@@ -28,5 +28,12 @@
     <string name="add_location_latitude_invalid">Please enter a valid latitude</string>
     <string name="add_location_longitude_invalid">Please enter a valid longitude</string>
 
+    <!-- MENUS -->
+    <string name="location_details_edit_menu">Edit location</string>
+    <string name="location_details_delete_menu">Delete location</string>
+
+    <!-- DELETE -->
+    <string name="location_details_delete_confirmation">Are you sure that you want to delete this location?</string>
+    <string name="location_details_delete">Delete</string>
 
 </resources>

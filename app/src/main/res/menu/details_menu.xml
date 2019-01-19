@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.lomza.moviesroom.MainActivity">
+    <item
+        android:id="@+id/action_edit_location"
+        android:orderInCategory="1"
+        android:title="@string/location_details_edit_menu"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_delete_location"
+        android:orderInCategory="2"
+        android:title="@string/location_details_delete_menu"
+        app:showAsAction="never" />
+</menu>

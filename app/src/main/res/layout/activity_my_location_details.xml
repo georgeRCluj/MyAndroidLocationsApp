@@ -21,10 +21,6 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary">
 
-            <TextView
-                style="@style/ToolbarTextStyle"
-                android:text="@string/toolbar_location_details" />
-
         </android.support.v7.widget.Toolbar>
 
         <fragment

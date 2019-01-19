@@ -74,6 +74,10 @@ public class MyLocationsDataRepository {
         Executors.newSingleThreadExecutor().execute(() -> myLocationsDao.insert(myLocations));
     }
 
+    public void deleteLocationFromDb(MyLocation myLocation) {
+        Executors.newSingleThreadExecutor().execute(() -> myLocationsDao.deleteMyLocation(myLocation));
+    }
+
     void clearAllDb() {
         Executors.newSingleThreadExecutor().execute(() -> myLocationsDao.deleteAll());
     }

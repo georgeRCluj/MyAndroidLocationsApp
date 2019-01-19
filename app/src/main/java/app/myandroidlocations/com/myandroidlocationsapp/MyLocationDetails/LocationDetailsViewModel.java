@@ -29,4 +29,8 @@ public class LocationDetailsViewModel extends AndroidViewModel {
     LiveData<MyLocation> getMyLocationWithId(int id) {
         return myLocationsData.getMyLocationWithId(id);
     }
+
+    void deleteMyLocationFromDb(MyLocation myLocation) {
+        myLocationsData.deleteLocationFromDb(myLocation);
+    }
 }
