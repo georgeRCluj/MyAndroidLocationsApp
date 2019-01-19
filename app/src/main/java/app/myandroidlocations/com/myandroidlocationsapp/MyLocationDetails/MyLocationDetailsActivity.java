@@ -27,7 +27,10 @@ public class MyLocationDetailsActivity extends FragmentActivity implements OnMap
     private GoogleMap googleMaps;
     private ActivityMyLocationDetailsBinding binding;
     private int locationClikedId;
-    private HashMap<Integer, String> markers;
+    private HashMap<Integer, Marker> markers;
+    private HashMap<String, MyLocation> myHashLocations;
+    private final int DESIRED_ZOOM_LEVEL = 15; // between 2 and 21
+    private Marker selectedMarker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +56,13 @@ public class MyLocationDetailsActivity extends FragmentActivity implements OnMap
     @Override
     public void onMapReady(GoogleMap googleMap) {
         googleMaps = googleMap;
+        setActionOnMarkerClick();
+    }
 
-//        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        MarkerOptions markerOptions = new MarkerOptions().position(sydney).title("Marker in Sydney");
-//        Marker marker = googleMaps.addMarker(markerOptions);
-//        Toast.makeText(this, "marker id is " + marker.getId(), Toast.LENGTH_SHORT).show();
-
+    private void setActionOnMarkerClick() {
         googleMaps.setOnMarkerClickListener(marker -> {
-            Toast.makeText(MyLocationDetailsActivity.this, "clicked on marker " + marker.getTitle(), Toast.LENGTH_SHORT).show();
+            selectedMarker = marker;
+            binding.setMyLocation(myHashLocations.get(marker.getId()));
             return false;
         });
     }
@@ -75,23 +76,22 @@ public class MyLocationDetailsActivity extends FragmentActivity implements OnMap
             }
         });
 
-        locationDetailsViewModel.getMyLocationWithId(locationClikedId).observe(this, myLocation -> {
-
-            LatLng markerLatLang = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
-            MarkerOptions markerOptions = new MarkerOptions().position(markerLatLang).title(myLocation.getLabel());
-            Marker marker = googleMaps.addMarker(markerOptions);
-
-            googleMaps.setOnMapLoadedCallback(() -> googleMaps.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 15))); // where 15 is the zoom level between 2 and 21
-        });
+        locationDetailsViewModel.getMyLocationWithId(locationClikedId).observe(this, myLocation -> googleMaps.setOnMapLoadedCallback(() -> {
+            selectedMarker = markers.get(myLocation.getId());
+            binding.setMyLocation(myLocation);
+            googleMaps.animateCamera(CameraUpdateFactory.newLatLngZoom(selectedMarker.getPosition(), DESIRED_ZOOM_LEVEL));
+        }));
     }
 
     private void addMarkersListOnMap(List<MyLocation> myLocations) {
         markers = new HashMap<>();
+        myHashLocations = new HashMap<>();
         for (MyLocation myLocation : myLocations) {
             LatLng markerLatLang = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
             MarkerOptions markerOptions = new MarkerOptions().position(markerLatLang).title(myLocation.getLabel());
             Marker marker = googleMaps.addMarker(markerOptions);
-            markers.put(myLocation.getId(), marker.getId());
+            markers.put(myLocation.getId(), marker);
+            myHashLocations.put(marker.getId(), myLocation);
         }
 
     }

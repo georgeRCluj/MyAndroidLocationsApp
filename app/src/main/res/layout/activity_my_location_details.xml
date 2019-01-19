@@ -2,6 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="myLocation"
+            type="app.myandroidlocations.com.myandroidlocationsapp.MyLocations.MyLocation" />
+
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,21 +41,57 @@
             android:layout_weight="1"
             tools:context=".MyLocationDetails.MyLocationDetailsActivity" />
 
-        <LinearLayout
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:orientation="vertical">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
+            android:layout_gravity="center"
+            android:columnCount="2"
+            android:orientation="vertical"
+            android:rowCount="2">
 
             <TextView
+                android:id="@+id/locationLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="details about the marker" />
-        </LinearLayout>
+                android:layout_marginLeft="15dp"
+                android:text="@{myLocation.label}"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/location_details_size" />
+
+            <TextView
+                android:id="@+id/addressLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="15dp"
+                android:text="@{myLocation.address}"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/location_details_size" />
+
+            <TextView
+                android:id="@+id/latitudeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@{`Lat: ` + myLocation.latitude}"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/location_details_size" />
+
+            <TextView
+                android:id="@+id/logitudeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@{`Long: ` + myLocation.longitude}"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/location_details_size" />
+
+        </GridLayout>
     </LinearLayout>
 </layout>

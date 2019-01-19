@@ -1,4 +1,4 @@
-package app.myandroidlocations.com.myandroidlocationsapp.Utils.Storage;
+package app.myandroidlocations.com.myandroidlocationsapp.Utils.SharedPrefUtils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,23 +12,23 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.List;
 
-import static app.myandroidlocations.com.myandroidlocationsapp.Utils.Storage.Constants.LOCAL_STORAGE_ROOT;
+import static app.myandroidlocations.com.myandroidlocationsapp.Utils.SharedPrefUtils.Constants.SHARED_PREF_ROOT;
 
-public class LocalStorage {
-    private static LocalStorage instance;
+public class SharedPref {
+    private static SharedPref instance;
 
     /**
      * Settings wrapped
      */
     private SharedPreferences settings;
 
-    public LocalStorage(Context context) {
-        settings = context.getSharedPreferences(LOCAL_STORAGE_ROOT, Context.MODE_PRIVATE);
+    public SharedPref(Context context) {
+        settings = context.getSharedPreferences(SHARED_PREF_ROOT, Context.MODE_PRIVATE);
     }
 
-    public static LocalStorage getInstance(Context context) {
+    public static SharedPref getInstance(Context context) {
         if (instance == null) {
-            instance = new LocalStorage(context);
+            instance = new SharedPref(context);
         }
         return instance;
     }
@@ -38,8 +38,8 @@ public class LocalStorage {
      *
      * @return A storage session
      */
-    public Storage edit() {
-        return new Storage(settings.edit());
+    public SharedPrefHelper edit() {
+        return new SharedPrefHelper(settings.edit());
     }
 
     /**

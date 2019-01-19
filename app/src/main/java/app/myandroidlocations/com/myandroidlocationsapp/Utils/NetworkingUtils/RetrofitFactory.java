@@ -1,4 +1,4 @@
-package app.myandroidlocations.com.myandroidlocationsapp.Utils.Networking;
+package app.myandroidlocations.com.myandroidlocationsapp.Utils.NetworkingUtils;
 
 
 import okhttp3.OkHttpClient;

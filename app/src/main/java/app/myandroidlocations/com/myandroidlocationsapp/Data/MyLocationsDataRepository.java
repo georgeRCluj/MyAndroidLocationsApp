@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 import app.myandroidlocations.com.myandroidlocationsapp.MyLocations.MyLocation;
-import app.myandroidlocations.com.myandroidlocationsapp.Utils.Networking.RetrofitFactory;
-import app.myandroidlocations.com.myandroidlocationsapp.Utils.Storage.LocalStorage;
+import app.myandroidlocations.com.myandroidlocationsapp.Utils.NetworkingUtils.RetrofitFactory;
+import app.myandroidlocations.com.myandroidlocationsapp.Utils.SharedPrefUtils.SharedPref;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -31,9 +31,9 @@ public class MyLocationsDataRepository {
 
     //region Populate database with my locations from the api (just on the first run)
     private void checkIfAppHasRunForTheFirstTime() {
-        isTheFirstRunOfTheApp = LocalStorage.getInstance(context).getString(SHARED_PREF_IS_THE_FIRST_RUN) != null;
+        isTheFirstRunOfTheApp = SharedPref.getInstance(context).getString(SHARED_PREF_IS_THE_FIRST_RUN) != null;
         if (!isTheFirstRunOfTheApp) {
-            LocalStorage.getInstance(context).store(SHARED_PREF_IS_THE_FIRST_RUN, SHARED_PREF_IS_THE_FIRST_RUN);
+            SharedPref.getInstance(context).store(SHARED_PREF_IS_THE_FIRST_RUN, SHARED_PREF_IS_THE_FIRST_RUN);
             getInitialDataFromApi();
         }
     }
