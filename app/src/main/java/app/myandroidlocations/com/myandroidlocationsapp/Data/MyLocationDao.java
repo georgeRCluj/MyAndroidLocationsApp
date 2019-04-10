@@ -13,6 +13,7 @@ import java.util.List;
 @Dao
 interface MyLocationDao {
 
+
     @Query("SELECT * FROM my_locations")
     LiveData<List<MyLocation>> getAllMyLocations();
 
